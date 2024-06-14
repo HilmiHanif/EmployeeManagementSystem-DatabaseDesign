@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<SqlWorkbenchSqlProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="FinalProject">
+  <Items>
+    <LogicalFolder Name="Connections" Type="2" Sorted="true">
+      <Items>
+        <ConnectionNode Name="LAPTOP-2UGTR7V5:LAPTOP-2UGTR7V5\Hilmi Hanif">
+          <Created>2024-06-09T18:14:15.9228808+07:00</Created>
+          <Type>SQL</Type>
+          <Server>LAPTOP-2UGTR7V5</Server>
+          <UserName />
+          <Authentication>Windows Authentication</Authentication>
+          <InitialDB />
+          <LoginTimeout>30</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Queries" Type="0" Sorted="true">
+      <Items>
+        <FileNode Name="constraint.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-2UGTR7V5:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>LAPTOP-2UGTR7V5</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>constraint.sql</FullPath>
+        </FileNode>
+        <FileNode Name="function.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-2UGTR7V5:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>LAPTOP-2UGTR7V5</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>function.sql</FullPath>
+        </FileNode>
+        <FileNode Name="penugasan.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-2UGTR7V5:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>LAPTOP-2UGTR7V5</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>penugasan.sql</FullPath>
+        </FileNode>
+        <FileNode Name="store_procedure.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-2UGTR7V5:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>LAPTOP-2UGTR7V5</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>store_procedure.sql</FullPath>
+        </FileNode>
+        <FileNode Name="table.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-2UGTR7V5:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>LAPTOP-2UGTR7V5</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>table.sql</FullPath>
+        </FileNode>
+        <FileNode Name="triggers.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-2UGTR7V5:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>LAPTOP-2UGTR7V5</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>triggers.sql</FullPath>
+        </FileNode>
+        <FileNode Name="view.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-2UGTR7V5:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>LAPTOP-2UGTR7V5</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>view.sql</FullPath>
+        </FileNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">
+      <Items />
+    </LogicalFolder>
+  </Items>
+</SqlWorkbenchSqlProject>
