@@ -107,7 +107,8 @@ SELECT * FROM tbl_jobs;
 
 -- ADD EMPLOYEES
 CREATE PROCEDURE insert_employees
-	@id_employee INT,	
+(
+    @id_employee INT,	
 	@firstname VARCHAR(25),
 	@last_name VARCHAR(25),
 	@gender VARCHAR(10),
@@ -118,13 +119,35 @@ CREATE PROCEDURE insert_employees
 	@id_manager INT,
 	@id_job VARCHAR(10),
 	@id_department INT
-AS   
+)
+AS
 BEGIN
-	INSERT INTO tbl_employees	(id_employee, first_name, last_name, gender, email, phone, hire_date, salary,
+    DECLARE @IsValidGender INT,
+            @IsValidEmail INT,
+            @IsValidPhone INT,
+            @IsValidSalary INT;
+    -- Validasi 
+    SET @IsValidGender = dbo.func_gender(@gender);
+    SET @IsValidEmail = dbo.func_email_format(@email);
+    SET @IsValidPhone = dbo.func_phone_number(@phone);
+    SET @IsValidSalary = dbo.func_salary(@id_job, @salary);
+    -- Cek validasi
+    IF @IsValidGender = 1 AND @IsValidEmail = 1 AND @IsValidPhone = 1 AND @IsValidSalary = 1
+    BEGIN
+        -- tambahkan data 
+		INSERT INTO tbl_employees	(id_employee, first_name, last_name, gender, email, phone, hire_date, salary,
 								id_manager, id_job, id_department)
-	VALUES	(@id_employee, @firstname, @last_name, @gender, @email, @phone, @hire_date, @salary, 
+		VALUES	(@id_employee, @firstname, @last_name, @gender, @email, @phone, @hire_date, @salary, 
 			@id_manager, @id_job, @id_department);
+        PRINT 'Employee added successfully.';
+    END
+    ELSE
+    BEGIN
+        -- pesan error
+        PRINT 'Error: Invalid input data. Please check your input and try again.';
+    END
 END;
+
 
 EXEC insert_employees	300, 'Hilmi', 'Hanif', 'Male', 'hilmihanif@gmail.com', 
 					'08884142475', '2024-06-05', 6000000, NULL, 'JOBS001', 220;
@@ -135,12 +158,51 @@ EXEC insert_employees	310, 'Muhammad', 'Burhanudin', 'Male', 'burhanudin@gmail.c
 EXEC insert_employees	320, 'Desi', 'Noviyanti', 'Female', 'desinoviyanti@gmail.com', 
 					'08219051840', '2024-06-05', 6000000, NULL, 'JOBS003', 220;
 
+EXEC insert_employees	330, 'Paman', 'Sam', 'Male', 'pamanSam', 
+					'08219051845', '2024-07-05', 6000000, NULL, 'JOBS003', 220;
+
+EXEC insert_employees	340, 'Ahmad', 'Rajendra', 'Male', 'AhmadRajendra@gmail.com', 
+					'08219051845', '2024-07-05', 6000000, NULL, 'JOBS003', 220;
+
+EXEC insert_employees	350, 'Wardah', 'Hannun', 'Female', 'wardahhannun@gmail.com', 
+					'082193627372', '2024-07-05', 6000000, NULL, 'JOBS003', 220;
+
 SELECT * FROM tbl_employees;
 SELECT * FROM tbl_job_histories;
 
 /*jika kita melakukan insert pada table employees maka
  data employees akan ke trigers ke table job histories
  dan menambahkan staus active */
+
+ -- ADD DATA ACCOUNT
+ CREATE PROCEDURE insert_accounts
+	@id_account INT,
+    @username VARCHAR(25),
+    @password VARCHAR(255),
+	@otp INT,
+	@is_expired DATETIME,
+    @is_used BIT
+AS
+BEGIN
+    DECLARE @isValid INT;
+
+    -- Validasi
+    SET @isValid = dbo.func_password_policy(@password);
+
+    IF @isValid = 1
+    BEGIN
+        -- Menyimpan username dan password ke dalam tabel
+        INSERT INTO tbl_accounts (id_account, username, password, otp, is_expired, is_used)
+		VALUES	(@id_account, @username, @password, @otp, @is_expired, @is_used)
+		PRINT 'successfully.';
+    END
+    ELSE
+    BEGIN
+        PRINT 'Error: Invalid input data';
+    END
+END;
+
+EXEC insert_accounts 360, 'lidiasuharyanti', 'lidiasuharyanti123!', 12245, '2024-06-05', 1 ;
 
 
 -- ADD DATA ROLES
@@ -178,11 +240,23 @@ EXEC insert_permissons 2, 'db_denydatawriter';
 EXEC insert_permissons 3, 'TESTING';
 
 
+
 -- INSERT DATA tbl_accounts
 INSERT INTO tbl_accounts
 VALUES	(300, 'hlmhnf', 'HilmiHanif123!', 98765, '2024-06-05', 1 ),
 		(310, 'burhanudin', 'BurhanUdin123!', 12345, '2024-06-05', 1 ),
 		(320, 'desinoviyanti', 'DesiNoviyanti123!', 67986, '2024-06-05',1 );
+
+INSERT INTO tbl_accounts
+VALUES	(330, 'PamanSam', 'PamanSam123!', 97765, '2024-07-05', 1 );
+
+INSERT INTO tbl_accounts
+VALUES	(340, 'ahmadrajendra', 'ahmadrajendra123!', 91765, '2024-06-05', 1 ),
+		(350, 'wardahhannun', 'wardahhannun123!', 12345, '2024-06-05', 1 );
+
+
+
+SELECT * FROM tbl_accounts;
 
 -- INSERT DATA tbl_role_pemission
 INSERT INTO tbl_role_permissions

@@ -84,6 +84,9 @@ CREATE TABLE tbl_employees (
 	id_job VARCHAR(10) NOT NULL,	-- FK
 	id_department INT NOT NULL		-- FK
 )
+
+SELECT * FROM tbl_employees;
+
 	
 CREATE TABLE tbl_jobs (
 	id_job VARCHAR(10) PRIMARY KEY,	-- PK
@@ -100,7 +103,6 @@ CREATE TABLE tbl_job_histories (
 	id_job VARCHAR(10) NOT NULL,	--PK
 	id_department INT NOT NULL		--PK
 )
-
 
 ALTER TABLE tbl_job_histories
 ALTER COLUMN status VARCHAR(10) NOT NULL;
